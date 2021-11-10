@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<form action="ControllerServlet" method="post" style="border:1px solid #ccc">
+<form action="SignupServlet" method="post" style="border:1px solid #ccc">
 
  <div class="container">
       <h1>Sign Up</h1>
