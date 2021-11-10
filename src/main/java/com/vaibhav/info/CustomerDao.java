@@ -3,6 +3,8 @@ package com.vaibhav.info;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 public class CustomerDao {
@@ -54,4 +56,26 @@ public class CustomerDao {
 			}
 		
 		}
+		
+		public String name=null;
+		public boolean check(String email , String password) {
+			// TODO Auto-generated method stub
+			Connection con = CustomerDao.create();
+			
+			try {
+				PreparedStatement ps=con.prepareStatement("select Name from records where Email=? and Password=?");
+				ps.setString(1,email);
+				ps.setString(2,password);
+			//	System.out.println(ps.executeUpdate());
+				ResultSet rs = ps.executeQuery();
+				boolean b = rs.next();
+				name=rs.getString(1);
+				return b;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return false;
+		}
+
 }
