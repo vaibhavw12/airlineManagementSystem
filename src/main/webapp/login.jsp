@@ -5,15 +5,16 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="signup.css">
+<link rel="stylesheet" href="css\signup.css">
 </head>
 <body>
 <form action="LoginServlet" method="post" style="border:1px solid #ccc">
 
- <div class="container">
+
+ <div class="container" style="text-align:center">
       <h1>Login</h1>
       <div>
-      <table>
+      <table class="center">
       <tr> 
       <th><label for="email"><b>Email</b></label></th>
       <th><input type="email" placeholder="Enter Email" name="email" required></th>
@@ -28,8 +29,8 @@
       </label>
       </div>
       <div class="clearfix">
-       
-        <button type="submit" class="signup">Login Up</button>
+       <a href="index.html"><button type="button" class="cancelbtn">Cancel</button></a>
+        <button type="submit" class="signup">Login</button>
       </div>
     </div>
 

@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.vaibhav.info.CustomerDao;
 import com.vaibhav.info.CustomerDetails;
@@ -29,7 +30,9 @@ public class LoginServlet extends HttpServlet {
 		
 		CustomerDao customerDao = new CustomerDao();
 		if(customerDao.check(email, password)) {
-			System.out.println("successfull");
+			HttpSession session = request.getSession();
+			session.setAttribute("username",customerDao.name);
+			response.sendRedirect("home.jsp");
 			
 		}else {
 			System.out.println("unsuccessfull");

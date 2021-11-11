@@ -40,7 +40,7 @@ public class SignupServlet extends HttpServlet {
 			// saving user details to Database
 			CustomerDao customerDao = new CustomerDao();
 			if(customerDao.save(customerDetails)) {
-				System.out.println("successfull");
+				response.sendRedirect("login.jsp");
 			}else {
 				out.print("<br><a href='signup.jsp'>try again</a>");	
 			}
