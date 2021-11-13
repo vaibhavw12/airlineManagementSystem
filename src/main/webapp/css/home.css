@@ -3,14 +3,14 @@
 .header {
 	
   overflow: hidden;
-  background-color: #ddd;
-  padding: 20px 10px;
+  
+  padding: 50px 10px;
 }
 
 /* Style the header links */
 .header a {
   float: left;
-  color: black;
+  color: #000000;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -21,43 +21,37 @@
 
 /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-  font-size: 25px;
+  font-size: 40px;
   font-weight: bold;
 }
 
 /* Change the background color on mouse-over */
 .header a:hover {
-  background-color: #ddd;
+  background-color: #dedddc;
   color: black;
 }
 
 /* Style the active/current link*/
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
-}
+
 
 /* Float the link section to the right */
 .header-right {
   text-align:center;
   float: none;
   overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 20px 10px;
+  
+  padding: 70px 10px;
 
 }
-.header-right a.active {
-  background-color: dodgerblue;
-  color: white;
-}
+
 .header-right a {
   color: black;
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 25px;
-  border-radius: 4px;
+  border-radius: 6px;
 }
 .header-right a.logo {
   font-size: 25px;
@@ -71,15 +65,19 @@
 }
 
 /* Style the active/current link*/
-.header-right a.active {
-  background-color: dodgerblue;
-  color: white;
-}
+
 .user {
 	
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 40px;
 	padding-left: 300px;
+}
+.img {
+	padding-top : 10px;
+	display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {
@@ -87,6 +85,7 @@
     float: none;
     display: block;
     text-align: left;
+   
   }
 
 }

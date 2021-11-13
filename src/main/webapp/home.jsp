@@ -21,11 +21,11 @@
 <body >
 
 <div class="header">
-  <a href="#default" class="logo">Welcome to My Air_Lines .....</a>
-  <%
+<a href="#default" class="logo">Welcome to My Air_Lines .....</a>
+<%
   String name =(String)request.getSession().getAttribute("username");
   out.print("<div class='user'>"+name+"</div>");
-	%>
+%>
   <a style="float:right" href="#">Logout</a>
   <a style="float:right" href="#">My profile</a>
   </div>
@@ -35,6 +35,9 @@
     <a href="#contact">Flight status</a>
     <a href="#about">Available</a>
   
+</div>
+<div class="img">
+<img src="template/My Air_lines-logos_transparent.png" alt="My Air_Lines">
 </div>
 
 </body>
