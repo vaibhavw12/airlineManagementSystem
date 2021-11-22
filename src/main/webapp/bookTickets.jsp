@@ -26,7 +26,7 @@
      <option value="Pune">
       <option value="Aurangabad">
   </datalist>
-  <input type="date">
+  <input type="date" name="date" required>
  <button type="submit">search flights</button>
 </div>
 </form>

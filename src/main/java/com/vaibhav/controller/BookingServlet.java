@@ -23,10 +23,11 @@ public class BookingServlet extends HttpServlet {
 		
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
+		String date = request.getParameter("date");
 		
-		System.out.println(source+" "+destination);
+		System.out.println(source+" "+destination+" "+date);
 		 LocalDateTime myObj = LocalDateTime.now();
-		 DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+		 DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 		    String formattedDate =  myObj.format(myFormatObj);
 		System.out.println(formattedDate);
