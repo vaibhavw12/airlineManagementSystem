@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+  <%@ page import="java.time.LocalDate" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +19,21 @@
       <input list="citys" placeholder="To" name="destination" required>
   <datalist id="citys">
     <option value="Mumbai">
-    <option value="Mannali">
     <option value="Delhi">
     <option value="Kolkata">
     <option value="Banguluru">
     <option value="Chennai">
      <option value="Pune">
-      <option value="Aurangabad">
   </datalist>
-  <input type="date" name="date" required>
+  <%
+  LocalDate myObj = LocalDate.now(); // Create a date object
+  out.print("<label for='date'>Date</label>"+"<input type='date' id='date' name='date' min="+myObj+" max='2021-12-31' required>"); 		 
+  %>
+ 
+  <label for="seats"><b>Seats</b></label>
+   <input type="number" id="seats" name="seats" min="1" max="3" required>
  <button type="submit">search flights</button>
+
 </div>
 </form>
 </body>

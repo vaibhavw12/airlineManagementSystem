@@ -8,6 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.vaibhav.info.CustomerBookings;
+import com.vaibhav.info.FlightData;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter; 
 
@@ -24,16 +29,38 @@ public class BookingServlet extends HttpServlet {
 		String source = request.getParameter("source");
 		String destination = request.getParameter("destination");
 		String date = request.getParameter("date");
+		String seats = request.getParameter("seats");
 		
-		System.out.println(source+" "+destination+" "+date);
-		 LocalDateTime myObj = LocalDateTime.now();
-		 DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-		    String formattedDate =  myObj.format(myFormatObj);
-		System.out.println(formattedDate);
-//		for(int i=0;i<formattedDate.length();i++) {
-//			System.out.println(formattedDate.charAt(i));
-//		}
+		if(source.equals(destination)) {
+			out.print("source and destination cannot be same");
+		}else {
+			
+			//	System.out.println(source+" "+destination+" "+date);
+				
+				CustomerBookings customerBookings = new CustomerBookings();
+				customerBookings.bookings(source, destination, date, seats);
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("bookings",customerBookings);
+				
+				 LocalDateTime now = LocalDateTime.now();  
+				DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+		        String formatDateTime = now.format(format);  
+				if(date.equals(formatDateTime)) {
+					FlightData flightData = new FlightData();
+					if(flightData.available(source+destination, date)) {
+						response.sendRedirect("bookings.jsp");
+					}else {
+						out.print("search for tommmorow");
+					}
+					
+				}else {
+					out.print("reservation confirmed for "+date);
+				}
+				
+			//	response.sendRedirect("bookings.jsp");
+		}
+	
 	}
 
 }
