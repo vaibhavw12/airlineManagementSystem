@@ -1,13 +1,14 @@
 package com.vaibhav.info;
 
 public class CustomerBookings {
-	private String source, destination, date, seats;
-	public void bookings(String source,String destination,String date, String seats) {
+	private String source, destination, date, seats, time;
+	public void bookings(String source,String destination,String date, String seats, String time) {
 		
 		this.source = source;
 		this.destination = destination;
 		this.date = date;
 		this.seats = seats;
+		this.time = time;
 	}
 	public String getSource() {
 		return source;
@@ -32,6 +33,12 @@ public class CustomerBookings {
 	}
 	public void setSeats(String seats) {
 		this.seats = seats;
+	}
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
 	

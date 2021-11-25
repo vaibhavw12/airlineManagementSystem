@@ -32,6 +32,7 @@ public class LoginServlet extends HttpServlet {
 		if(customerDao.check(email, password)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("username",customerDao.name);
+			session.setAttribute("email",email);
 			response.sendRedirect("home.jsp");
 			
 		}else {

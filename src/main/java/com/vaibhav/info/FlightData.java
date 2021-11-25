@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class FlightData {
-	
+	public static String flightTime = null;
 	public boolean available(String sourcedestination,String date ) {
 		 LocalDateTime now = LocalDateTime.now();  
 	        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
@@ -32,6 +32,12 @@ public class FlightData {
 //		}
 		
 		if(set>Integer.parseInt(formatDateTime.substring(11,13))) {
+			if(set>=0 && set<12) {
+				flightTime = set+ " : 00";
+			}else {
+				flightTime = set+ " : 00";
+			}
+			
 			return true;
 		}else {
 			return false;

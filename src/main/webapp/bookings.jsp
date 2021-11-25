@@ -24,7 +24,8 @@
 	String destination = customerBookings.getDestination();
 	String date = customerBookings.getDate();
 	String seats = customerBookings.getSeats();
-	out.print("From = "+source+"<br>"+"To = "+destination+"<br>"+"Date = "+date+"<br>"+"Seats = "+seats);
+	String FlightTime = customerBookings.getTime();
+	out.print("From = "+source+"<br>"+"To = "+destination+"<br>"+"Date = "+date+"<br>"+"Seats = "+seats+"<br>"+"Time = "+FlightTime);
 	
     %>
 

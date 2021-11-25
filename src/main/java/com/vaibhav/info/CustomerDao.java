@@ -78,4 +78,31 @@ public class CustomerDao {
 			return false;
 		}
 
+		public boolean myTrips(CustomerBookings customerBookings, String email) {
+			Connection con = CustomerDao.create();
+			int status = 0; 
+			try {
+				
+				//value insert in database
+				PreparedStatement ps=con.prepareStatement("insert into trips (Email,Source,Destination,Date,Seats,Time) values(?,?,?,?,?,?)");
+				ps.setString(1, email);
+				ps.setString(2, customerBookings.getSource());
+				ps.setString(3, customerBookings.getDestination());
+				ps.setString(4, customerBookings.getDate());
+				ps.setString(5, customerBookings.getSeats());
+				ps.setString(6, customerBookings.getTime());
+				//executing query
+			    status= ps.executeUpdate();
+			}
+			catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}if(status==1) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+			
+		
 }
