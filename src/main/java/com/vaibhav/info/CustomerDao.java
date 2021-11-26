@@ -6,6 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
 
 public class CustomerDao {
 	
@@ -103,6 +107,40 @@ public class CustomerDao {
 				return false;
 			}
 		}
+		
+		public static List<String> showTrips(String email){
 			
+			List<String> trips = new ArrayList<>();
+			Connection con = CustomerDao.create();
+
+			try {
+				PreparedStatement ps=con.prepareStatement("select * from trips where Email=?");
+				ps.setString(1,email);
+			//	System.out.println(ps.executeUpdate());
+				ResultSet rs = ps.executeQuery();
+				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+				
+		//		boolean b = rs.next();
+				while(rs.next()) {
+//				           System.out.print(rsmd.getColumnName(3) + " " + rs.getString(3)+" - ");
+//				           System.out.print(rsmd.getColumnName(4)+ " " + rs.getString(4)+" - ");
+//				           System.out.print(rsmd.getColumnName(5) + " " + rs.getString(5)+" - ");
+//				           System.out.print(rsmd.getColumnName(6)+ " " + rs.getString(6)+" - ");
+//				           System.out.print(rsmd.getColumnName(7) + " " + rs.getString(7)+" - ");
+//				           System.out.println(" ");
+				           
+				           trips.add(rsmd.getColumnName(3) + " " + rs.getString(3)+" ");
+				           trips.add(rsmd.getColumnName(4)+ " " + rs.getString(4)+" ");
+				           trips.add(rsmd.getColumnName(5) + " " + rs.getString(5)+" ");
+				           trips.add(rsmd.getColumnName(6)+ " " + rs.getString(6)+" ");
+				           trips.add(rsmd.getColumnName(7) + " " + rs.getString(7)+" ");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return trips;
+			
+		}
 		
 }

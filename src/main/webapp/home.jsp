@@ -31,9 +31,9 @@
   </div>
   <div class="header-right">
     <a class="active" href="bookTickets.jsp">Book Tickets</a>
-    <a href="#">My trips</a>
-    <a href="#contact">Flight status</a>
-    <a href="#about">Available</a>
+    <a href="myTrips.jsp">My trips</a>
+    <a href="flightStatus.jsp">Flight status</a>
+    <a href="available.jsp">Available</a>
   
 </div>
 <div class="img">

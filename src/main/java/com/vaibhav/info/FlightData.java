@@ -9,6 +9,8 @@ import java.util.Map;
 
 public class FlightData {
 	public static String flightTime = null;
+	public static Map<Integer,String> mapStatic = new HashMap<>();
+	public static List<Integer> timings = new ArrayList<>();
 	public boolean available(String sourcedestination,String date ) {
 		 LocalDateTime now = LocalDateTime.now();  
 	        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
@@ -44,7 +46,7 @@ public class FlightData {
 		}
 	}
 
-	private Map<String,Integer> options() {
+	private static Map<String,Integer> options() {
 		// TODO Auto-generated method stub
 		Map<String,Integer> map = new HashMap<>();
 		
@@ -61,15 +63,27 @@ public class FlightData {
 				
 			}
 		}
-	//	System.out.println(list.toString());
-		
+	//	System.out.println(list.size());
 		for(int i=0;i<list.size();i++) {
 			map.put( list.get(i),(i+1)%24);
+			mapStatic.put((i+1)%24, list.get(i));
 		}
 		
 		System.out.println(map.toString());
+	//	System.out.println(map.size());
 		return map;
 	}
 	
+	public static List<String> flightAvailble(String time) {
+		Map<String,Integer> map = options();
+		List<String> available = new ArrayList<>();
+		for(Integer i : mapStatic.keySet()) {
+			if(i>Integer.parseInt(time)) {
+				timings.add(i);
+				available.add(mapStatic.get(i));
+			}
+		}
+		return available;
+	}
 
 }
