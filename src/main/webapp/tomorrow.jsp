@@ -15,7 +15,7 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
 %>
 <%
 List<String> available = FlightData.flightAvailble();
-List<Integer> timing = FlightData.timings2;
+List<String> timing = FlightData.timings2;
 int index=0;
 for(String s : available){
 	out.print(s+" ->> available till "+timing.get(index)+":00"+"<br>");

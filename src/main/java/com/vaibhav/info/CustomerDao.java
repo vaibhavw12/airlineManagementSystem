@@ -170,5 +170,60 @@ public class CustomerDao {
 			return trips;
 			
 		}
+			
+			public static boolean reservation(String email,String source,String destination,String date,String seats,String time){
+				
+				Connection con = CustomerDao.create();
+				int status = 0;
+
+				try {
+					PreparedStatement ps=con.prepareStatement("insert into reservations (Email,Source,Destination,Date,Seats,Time) values(?,?,?,?,?,?)");
+					
+					ps.setString(1, email);
+					ps.setString(2, source);
+					ps.setString(3, destination);
+					ps.setString(4, date);
+					ps.setString(5, seats);
+					ps.setString(6, time);
+					status= ps.executeUpdate();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}if(status==1) {
+					return true;
+				}else {
+					return false;
+				}
+				
+			}
+			
+			public static List<String> myReservation(String email){
+				
+				List<String> trips = new ArrayList<>();
+				Connection con = CustomerDao.create();
+
+				try {
+					PreparedStatement ps=con.prepareStatement("select * from reservations where Email=?");
+					ps.setString(1,email);
+				//	System.out.println(ps.executeUpdate());
+					ResultSet rs = ps.executeQuery();
+					ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+					
+			//		boolean b = rs.next();
+					while(rs.next()) {
+					        
+					           trips.add(rsmd.getColumnName(3) + " " + rs.getString(3)+" ");
+					           trips.add(rsmd.getColumnName(4)+ " " + rs.getString(4)+" ");
+					           trips.add(rsmd.getColumnName(5) + " " + rs.getString(5)+" ");
+					           trips.add(rsmd.getColumnName(6)+ " " + rs.getString(6)+" ");
+					           trips.add(rsmd.getColumnName(7)+ " " + rs.getString(7)+" ");
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return trips;
+				
+			}
 		
 }

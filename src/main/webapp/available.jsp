@@ -21,7 +21,7 @@ DateTimeFormatter format = DateTimeFormatter.ofPattern("HH");
 String formatDateTime = now.format(format);  
 //out.print(formatDateTime);
 List<String> available = FlightData.flightAvailble(formatDateTime);
-List<Integer> timing = FlightData.timings1;
+List<String> timing = FlightData.timings1;
 int index=0;
 for(String s : available){
 	out.print(s+" ->> available till "+timing.get(index)+":00"+"<br>");

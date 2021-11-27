@@ -57,15 +57,29 @@ public class BookingServlet extends HttpServlet {
 							System.out.println("True");
 						}
 						
+						Email mail = new Email();
+						mail.SendBookTickets(email, customerBookings);
+						
 						session.setAttribute("bookings",customerBookings);
 						
 						response.sendRedirect("bookings.jsp");
 					}else {
-						out.print("search for tommmorow");
+						out.print("Sorry no flights available for "+source+" "+destination+" for today");
 					}
 					
 				}else {
-					out.print("reservation confirmed for "+date);
+					HttpSession session = request.getSession();
+					String email = (String) session.getAttribute("email");
+					String time = FlightData.time(source+destination);
+					if(CustomerDao.reservation(email,source,destination,date,seats,time)) {
+						Email mail = new Email();
+						mail.SendReservation(email,source,destination,date,seats,time);
+						
+						out.print("reservation confirmed for "+date);
+					}
+					else {
+						out.print("something went wrong try again....");
+					}
 				}
 				
 			//	response.sendRedirect("bookings.jsp");

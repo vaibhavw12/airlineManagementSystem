@@ -1,0 +1,27 @@
+create database airlineManagementSystem;
+use airlineManagementSystem;
+create table records (id int PRIMARY KEY auto_increment,
+						Name varchar(200),
+                        Email varchar(200) unique,
+						Password varchar(200),
+                        Mobile varchar(200) unique);
+desc records;
+select * from records;
+delete from records where id=18 ;
+create table trips (id int PRIMARY KEY auto_increment,
+					Email varchar(200),
+                    Source varchar(200),
+                    Destination varchar(200),
+                    Date varchar(200),
+                    Seats varchar(200),
+                    Time varchar(200));
+ desc trips;      
+ select * from trips;
+ create table reservations (id int PRIMARY KEY auto_increment,
+							Email varchar(200),
+                            Source varchar(200),
+							Destination varchar(200),
+							Date varchar(200),
+							Seats varchar(200),
+							Time varchar(200));
+ select * from reservations;

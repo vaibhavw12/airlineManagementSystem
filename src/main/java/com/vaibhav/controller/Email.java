@@ -6,6 +6,8 @@ import java.util.stream.IntStream;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import com.vaibhav.info.CustomerBookings;
+
 
 public class Email {
 	
@@ -76,4 +78,87 @@ public class Email {
 			        System.out.println("Random Integers: "+OTP);
 					return randNum+"";
 			  }
+			  
+			  public void SendBookTickets(String receiverEmailID,CustomerBookings CustomerBookings){
+				   
+				  // Receiver Email Address
+				  this.receiverEmailID=receiverEmailID; 
+				  // Subject
+				  this.emailSubject="Tickets Booked Successfully";
+				  // Body
+				  this.emailBody="Flight Confirmation From "+CustomerBookings.getSource()+" To "+CustomerBookings.getDestination()+
+				  " on "+CustomerBookings.getDate()+" for "+CustomerBookings.getSeats()+" Seats at "+CustomerBookings.getTime();
+				  Properties props = new Properties();
+				  props.put("mail.smtp.user",senderEmailID);
+				  props.put("mail.smtp.host", emailSMTPserver);
+				  props.put("mail.smtp.port", emailServerPort);
+				  props.put("mail.smtp.starttls.enable", "true");
+				  props.put("mail.smtp.auth", "true");
+				  props.put("mail.smtp.socketFactory.port", emailServerPort);
+				  props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+				  props.put("mail.smtp.socketFactory.fallback", "false");
+				  SecurityManager security = System.getSecurityManager();
+				  try{  
+				  Authenticator auth = new SMTPAuthenticator();
+				  Session session = Session.getInstance(props, auth);
+				  MimeMessage msg = new MimeMessage(session);
+				  msg.setText(emailBody);
+				  msg.setSubject(emailSubject);
+				  msg.setFrom(new InternetAddress(senderEmailID));
+				  msg.addRecipient(Message.RecipientType.TO,
+				  new InternetAddress(receiverEmailID));
+				  Transport.send(msg);
+				  System.out.println("Message send Successfully:)"); }
+				  
+				  catch(javax.mail.SendFailedException e){
+					  System.out.println("try again");
+				  }
+				  catch (Exception mex){
+				  mex.printStackTrace();}
+				  
+				  
+				  }
+			  
+			  public void SendReservation(String receiverEmailID,String source,String destination,String date,String seats,String time){
+				   
+				  // Receiver Email Address
+				  this.receiverEmailID=receiverEmailID; 
+				  // Subject
+				  this.emailSubject="Reservation Successfully";
+				  // Body
+				  this.emailBody="Flight Confirmation From "+source+" To "+destination+
+				  " on "+date+" for "+seats+" Seats at "+time;
+				  Properties props = new Properties();
+				  props.put("mail.smtp.user",senderEmailID);
+				  props.put("mail.smtp.host", emailSMTPserver);
+				  props.put("mail.smtp.port", emailServerPort);
+				  props.put("mail.smtp.starttls.enable", "true");
+				  props.put("mail.smtp.auth", "true");
+				  props.put("mail.smtp.socketFactory.port", emailServerPort);
+				  props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+				  props.put("mail.smtp.socketFactory.fallback", "false");
+				  SecurityManager security = System.getSecurityManager();
+				  try{  
+				  Authenticator auth = new SMTPAuthenticator();
+				  Session session = Session.getInstance(props, auth);
+				  MimeMessage msg = new MimeMessage(session);
+				  msg.setText(emailBody);
+				  msg.setSubject(emailSubject);
+				  msg.setFrom(new InternetAddress(senderEmailID));
+				  msg.addRecipient(Message.RecipientType.TO,
+				  new InternetAddress(receiverEmailID));
+				  Transport.send(msg);
+				  System.out.println("Message send Successfully:)"); }
+				  
+				  catch(javax.mail.SendFailedException e){
+					  System.out.println("try again");
+				  }
+				  catch (Exception mex){
+				  mex.printStackTrace();}
+				  
+				  
+				  }
+
+			
+			  
 }
