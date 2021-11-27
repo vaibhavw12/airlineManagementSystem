@@ -9,6 +9,11 @@
 </head>
 <body>
 <%
+if((session.getAttribute("email")==null) || (session.getAttribute("username")==null)){
+	response.sendRedirect("index.html");
+}
+%>
+<%
   String name =(String)request.getSession().getAttribute("username");
   out.print("<div class='user'>"+name+"</div>");
 %>

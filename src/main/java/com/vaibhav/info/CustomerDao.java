@@ -143,4 +143,32 @@ public class CustomerDao {
 			
 		}
 		
+			public static List<String> profile(String email){
+			
+			List<String> trips = new ArrayList<>();
+			Connection con = CustomerDao.create();
+
+			try {
+				PreparedStatement ps=con.prepareStatement("select * from records where Email=?");
+				ps.setString(1,email);
+			//	System.out.println(ps.executeUpdate());
+				ResultSet rs = ps.executeQuery();
+				ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+				
+		//		boolean b = rs.next();
+				while(rs.next()) {
+				        
+				           trips.add(rsmd.getColumnName(2) + " " + rs.getString(2)+" ");
+				           trips.add(rsmd.getColumnName(3)+ " " + rs.getString(3)+" ");
+				           trips.add(rsmd.getColumnName(4) + " " + rs.getString(4)+" ");
+				           trips.add(rsmd.getColumnName(5)+ " " + rs.getString(5)+" ");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return trips;
+			
+		}
+		
 }

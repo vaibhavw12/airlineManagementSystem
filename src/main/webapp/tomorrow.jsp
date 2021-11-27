@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@ page import="com.vaibhav.info.CustomerDao,java.util.List" %>
+    <%@ page import="com.vaibhav.info.FlightData" import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,22 +13,15 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
 	response.sendRedirect("index.html");
 }
 %>
-<h3>My Trips</h3>
-
 <%
-session = request.getSession();
-String email = (String)session.getAttribute("email");
-List<String> trips = CustomerDao.showTrips(email);
-int b = 5, j = 1;
-for(int i=0;i<trips.size();i++){
-
-	out.print(trips.get(i)+" ");
-	if(j==b){
-		b+=5;
-		out.print("<br>");
-	}
-	j++;
+List<String> available = FlightData.flightAvailble();
+List<Integer> timing = FlightData.timings2;
+int index=0;
+for(String s : available){
+	out.print(s+" ->> available till "+timing.get(index)+":00"+"<br>");
+	index++;
 }
+
 %>
 </body>
 </html>

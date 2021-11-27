@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="css\bookTicket.css">
 </head>
 <body>
+<%
+if((session.getAttribute("email")==null) || (session.getAttribute("username")==null)){
+	response.sendRedirect("index.html");
+}
+%>
 <form action="BookingServlet" method="post">
 <div class="booking">
 

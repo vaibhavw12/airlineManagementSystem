@@ -9,7 +9,11 @@
 </head>
 <body>
 <h2>Flights Available for Today</h2>
-
+<%
+if((session.getAttribute("email")==null) || (session.getAttribute("username")==null) ){
+	response.sendRedirect("index.html");
+}
+%>
 <%
 
 LocalDateTime now = LocalDateTime.now();  
@@ -17,7 +21,7 @@ DateTimeFormatter format = DateTimeFormatter.ofPattern("HH");
 String formatDateTime = now.format(format);  
 //out.print(formatDateTime);
 List<String> available = FlightData.flightAvailble(formatDateTime);
-List<Integer> timing = FlightData.timings;
+List<Integer> timing = FlightData.timings1;
 int index=0;
 for(String s : available){
 	out.print(s+" ->> available till "+timing.get(index)+":00"+"<br>");

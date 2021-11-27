@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<%
+if((session.getAttribute("email")==null) || (session.getAttribute("username")==null)){
+	response.sendRedirect("index.html");
+}
+%>
+<form action="Logout" method="post">
+ <input type="submit" value="Logout">
+</form>
 </body>
 </html>
