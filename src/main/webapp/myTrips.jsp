@@ -6,14 +6,27 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css\tomorrow.css">
 </head>
+<style>
+	body {
+  background-image: url('template/airport-terminal.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+	}
+
+</style>
 <body>
 <%
 if((session.getAttribute("email")==null) || (session.getAttribute("username")==null)){
 	response.sendRedirect("index.html");
 }
 %>
-<h3>My Trips</h3>
+<div class="img">
+<img src="template/My Air_lines-logos_transparent.png" alt="My Air_Lines">
+</div>
+<h2>My Trips</h2>
 
 <%
 session = request.getSession();
@@ -22,7 +35,7 @@ List<String> trips = CustomerDao.showTrips(email);
 int b = 5, j = 1;
 for(int i=0;i<trips.size();i++){
 
-	out.print(trips.get(i)+" ");
+	out.print("<div class='container1'>"+trips.get(i)+" </div>");
 	if(j==b){
 		b+=5;
 		out.print("<br>");

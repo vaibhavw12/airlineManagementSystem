@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+
+.container1{
+	background-color:#5a75a5;
+	padding: 20px 200px ;
+	font-size: 25px;
+
+}
+.container2{
+	background-color:#5a75a5;
+	padding: 20px 400px ;
+	font-size: 25px;
+}
+.container3{
+	background-color:#5a75a5;
+	padding: 20px 600px ;
+	font-size: 25px;
+}

@@ -15,9 +15,9 @@
 	}
 
 </style>
-<link rel="stylesheet" href="css\afterbooking.css">
+<link rel="stylesheet" href="css/afterbooking.css">
 </head>
-<body style="text-align:center">
+<body >
 
 <%
 if((session.getAttribute("email")==null) || (session.getAttribute("username")==null)){
@@ -27,16 +27,17 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
 <div class="header">
 <%
   String name =(String)request.getSession().getAttribute("username");
-  out.print("<div class='user'>"+name+"</div>");
+//  out.print("<div class='user'>"+name+"</div>");
 %>
-<div class="header-right">
-  <a style="float:right" href="#">Logout</a>
-  <a style="float:right" href="#">My profile</a>
-  </div>
+
   </div>
   <div class="img">
 <img src="template/My Air_lines-logos_transparent.png" alt="My Air_Lines">
-    <h3>Bookings Confirmed</h3><br>
+<div class="header-right">
+  
+  </div>
+    <h2>Bookings Confirmed</h2>
+    <div class='display'>
     <%
     session = request.getSession();
     CustomerBookings customerBookings = new CustomerBookings();
@@ -46,10 +47,14 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
 	String date = customerBookings.getDate();
 	String seats = customerBookings.getSeats();
 	String FlightTime = customerBookings.getTime();
-	out.print("From = "+source+"<br>"+"To = "+destination+"<br>"+"Date = "+date+"<br>"+"Seats = "+seats+"<br>"+"Time = "+FlightTime);
-	
+	out.print("<div class='container1'> From = "+source+"</div><br>");
+	out.print("<div class='container1'> To = "+destination+"</div><br>");
+	out.print("<div class='container1'> Date = "+date+"</div><br>");
+	out.print("<div class='container1'> Seats = "+seats+"</div><br>");
+	out.print("<div class='container1'> Time = "+FlightTime+"</div><br>");
     %>
-
+    <a style="float:right" href="logout.jsp">Logout</a>
+</div>
      
 
 </div>
