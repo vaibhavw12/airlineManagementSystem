@@ -6,20 +6,36 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<style>
+	body {
+  background-image: url('template/airport-terminal.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+	}
+
+</style>
+<link rel="stylesheet" href="css\afterbooking.css">
 </head>
-<body>
+<body style="text-align:center">
+
 <%
 if((session.getAttribute("email")==null) || (session.getAttribute("username")==null)){
 	response.sendRedirect("index.html");
 }
 %>
+<div class="header">
 <%
   String name =(String)request.getSession().getAttribute("username");
   out.print("<div class='user'>"+name+"</div>");
 %>
+<div class="header-right">
   <a style="float:right" href="#">Logout</a>
   <a style="float:right" href="#">My profile</a>
-  
+  </div>
+  </div>
+  <div class="img">
+<img src="template/My Air_lines-logos_transparent.png" alt="My Air_Lines">
     <h3>Bookings Confirmed</h3><br>
     <%
     session = request.getSession();
@@ -35,8 +51,7 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
     %>
 
      
-<div class="img">
-<img src="template/My Air_lines-logos_transparent.png" alt="My Air_Lines">
+
 </div>
 
 </body>

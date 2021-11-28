@@ -64,7 +64,7 @@ public class FlightData {
 		// TODO Auto-generated method stub
 		Map<String,String> map = new HashMap<>();
 		
-		String[] cities = {"Mumbai","Delhi","Kolkata","Banguluru","Chennai","Pune"};
+		String[] cities = {"Chennai","Hyderabad","Jaipur","Delhi","Luchnow","Kolkata","Mumbai","Banguluru","Pune","Indore"};
 		List<String> list = new ArrayList<>();
 		for(String s : cities) {
 			//System.out.println(s);
