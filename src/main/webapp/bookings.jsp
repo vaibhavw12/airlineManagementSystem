@@ -13,6 +13,21 @@
   background-attachment: fixed;
   background-size: 100% 100%;
 	}
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+}
 
 </style>
 <link rel="stylesheet" href="css/afterbooking.css">
@@ -58,6 +73,12 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
      
 
 </div>
+<form action="CancelReservation" method="post" style="border:1px solid #ccc">
 
+<div class="button">
+      
+        <button type="submit" class="signup">Cancel Reservation</button>
+      </div>
+</form>
 </body>
 </html>

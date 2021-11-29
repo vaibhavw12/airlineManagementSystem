@@ -27,11 +27,15 @@
       <label>
        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
       </label>
+     
       </div>
       <div class="clearfix">
        <a href="index.html"><button type="button" class="cancelbtn">Cancel</button></a>
         <button type="submit" class="signup">Login</button>
       </div>
+       <label style="font-size:20px">
+       <a href="forgot.jsp">forgot password ?</a>
+      </label>
     </div>
 
   </form>

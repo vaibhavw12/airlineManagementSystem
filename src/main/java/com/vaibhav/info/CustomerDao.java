@@ -225,5 +225,62 @@ public class CustomerDao {
 				return trips;
 				
 			}
+			
+			public static String password(String email){
+				
+				Connection con = CustomerDao.create();
+
+				try {
+					PreparedStatement ps=con.prepareStatement("select Password from records where Email=?");
+					ps.setString(1,email);
+				//	System.out.println(ps.executeUpdate());
+					ResultSet rs = ps.executeQuery();
+					
+					boolean b = rs.next();
+					return rs.getString(1); 
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return null;
+				
+			}
+
+
+			public static boolean cancel(String email, String date, String flightTime) {
+				// TODO Auto-generated method stub
+				Connection con = CustomerDao.create();
+				int status =0;
+
+				try {
+					PreparedStatement ps=con.prepareStatement("select id from trips where Email=? and Date=? and Time=?");
+					ps.setString(1,email);
+					ps.setString(2,date);
+					ps.setString(3,flightTime);
+				//	System.out.println(ps.executeUpdate());
+					ResultSet rs = ps.executeQuery();
+					
+					boolean b = rs.next();
+					String id = rs.getString(1); 
+					System.out.println(id);
+					ps=con.prepareStatement("delete from trips where id=?");
+					ps.setString(1,id);
+					status = ps.executeUpdate();
+					if(status==0) {
+						return false;
+					}else {
+						return true;
+					}
+					
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return false;
+				
+				
+			}
 		
 }
