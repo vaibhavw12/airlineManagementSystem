@@ -62,11 +62,11 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
 	String date = customerBookings.getDate();
 	String seats = customerBookings.getSeats();
 	String FlightTime = customerBookings.getTime();
-	out.print("<div class='container1'> From = "+source+"</div><br>");
-	out.print("<div class='container1'> To = "+destination+"</div><br>");
-	out.print("<div class='container1'> Date = "+date+"</div><br>");
-	out.print("<div class='container1'> Seats = "+seats+"</div><br>");
-	out.print("<div class='container1'> Time = "+FlightTime+"</div><br>");
+	out.print("<div class='container1'> From -->> "+source+"</div><br>");
+	out.print("<div class='container1'> To -->> "+destination+"</div><br>");
+	out.print("<div class='container1'> Date -->> "+date+"</div><br>");
+	out.print("<div class='container1'> Seats -->> "+seats+"</div><br>");
+	out.print("<div class='container1'> Time -->> "+FlightTime+"</div><br>");
     %>
     <a style="float:right" href="logout.jsp">Logout</a>
 </div>
