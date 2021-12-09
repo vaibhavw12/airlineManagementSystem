@@ -32,17 +32,13 @@ if((session.getAttribute("email")==null) || (session.getAttribute("username")==n
 %><div style="">
 
   <a style="float:right" href="logout.jsp">Logout</a>
-   <a style="float:right" href="settings.jsp">Settings</a>
-  <a style="float:right" href="profile.jsp">My profile</a>
   </div>
   </div>
   <div class="header-right">
-    <a class="active" href="bookTickets.jsp">Book Tickets</a>
-    <a href="reservation.jsp">My Reservations</a>
-    <a href="myTrips.jsp">My trips</a>
-    
-    <a href="available.jsp">Flights Available for Today</a>
-    <a href="tomorrow.jsp">Flights Available for Reservation</a>
+    <a class="active" href="changePassword.jsp">Change My Password</a><br><br><br>
+    <a href="changeMobile.jsp">Change My Mobile No</a><br><br><br>
+    <a href="paymentOptions.jsp">Payments Options</a><br><br><br>
+    <a href="deleteAccount.jsp">Delete My Account</a>
   
 </div>
 <div class="img">
